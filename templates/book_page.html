@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/creating.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/chapterpage.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/book_page.css' %}">
+ {% endblock %}
+
+{% block body %} 
+<section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+  <div class="book_page_header">
+      <div class="forum_url"><a  class ="forumbutton" href="/forum/{{books.id}}">Форум</a></div>
+    <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+      <button type="button" class="btn color-btn">search</button>
+    </div>
+  </div>
+</section>
+<section class="both_information_line">
+  <div class="information_line">
+      <div class="information_little_block">{{books.name}}</div>
+      <div class="information_little_block">{{average}}</div>
+  </div>
+  <div class="information_line">
+    <select class="information_little_block">
+      <option hidden>Автор(и)</option>
+    {% for author in authors %}
+
+      <option value="" disabled>{{author.name}}</option>
+      {% endfor %}
+    </select>
+      <div class="information_little_block">{{status.name}}</div>
+  </div>
+  <div class="information_line">
+    <select class="information_little_block_border">
+      <option hidden>Жанр(и)</option>
+    {% for genre in genres %}
+    <option class="disabled_option" value="" disabled>{{genre.name}}</option>
+      {% endfor %}
+    </select>
+    <form action="status" method="post">
+      {% csrf_token %}
+      <div class ="status_form">
+    <select class="information_little_block_border" name ="status">
+      <option hidden>Статус прочитання</option>
+      <option >Прочитане</option>
+      <option >Читаю</option>
+      <option >Кинуто</option>
+      <option >Планую</option>
+    </select>
+    <button class = "status_button" type=submit>Обрати</button>
+  </div>
+  </form>
+  </div>
+</section>
+
+<section>
+<div class="booksynopsis">
+  <p class="block_name">Синопсис</p>
+  <div class="book_synopsis">{{books.synopsis}}</div>
+</div>
+</section>
+
+<section class="chapter-review-block">
+<div class="chapter_list">
+  {%for i in chapters%}
+  <div class="chapter_name_number"><a class="nextchapterbutton" href='chapter/{{forloop.counter}}'>Глава {{ forloop.counter }}</a></div>
+  {% endfor %}
+</div>
+<div class="topreview">
+  <div class="topreviewtext">{{reviews.textofreview}}</div>
+  <div class="chapter_name_number"><a class= "review_url" href="/bookpage/{{books.id}}/reviews">Переглянути інші рев'ю</a></div>
+</div>
+</section>
+<form action="review" method="post">
+  {% csrf_token %}
+<section class="review">
+<p class="block_name">Опублікуйте рев'ю як *{{user}}*</p>
+<div class="rating">
+  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+</div>
+</div>
+<textarea class="review_text" name = "reviewtext"></textarea>
+<button class="commentbutton" type="submit">Опублікувати</button>
+</section>
+</form>
+{% if settings == 1 %}
+<form action="/bookpage/{{books.id}}/update" method="post">
+  {% csrf_token %}
+  <button class="update" type="submit">Редагувати</button>
+</form>
+{% endif %}
+  {% endblock %}

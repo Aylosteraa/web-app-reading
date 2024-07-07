@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} 
+	<link rel="stylesheet" href="{% static 'styles/cataloge.css'%}"> 
+	<link rel="stylesheet" href="{% static 'styles/user-page.css'%}">
+{% endblock %}
+
+{% block body %}
+	<section class="pb-4">
+		<div class="rounded-5">
+		  
+			<section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+			  <div>
+				<div class="input-group">
+				  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+				  <button type="button" class="buto color-btn">search</button>
+				</div>
+			  </div>
+			</section>
+			
+			<section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+				<div class = "dark-rectangel">
+					<div class = "light-rectangel">
+						<h2 class="h2_user">Сторінка користувача</h2>
+					  </div>
+				</div>
+			</section>
+		</div>	  
+	</section>
+
+	<div class="container flex-space-between" >
+		{% if user.avatar %}
+		<img class = "user_img" src="{{user.avatar.url}}" alt="">
+		{% endif %}
+		{% if not user.avatar %}
+		<div class = "user_img"></div>
+		{% endif %}
+		<div class="flex-column">
+			<div class="flex-row">
+				<a href="user_update"><button type="button" class="buto color-btn">Налаштування</button></a>
+				<form action="{% url 'logout_view' %}" method="post">
+					{% csrf_token %}
+					<button type="submit" class="buto color-btn">Вихід</button>
+				</form>
+			</div>
+			<p class="name">{{user.first_name}} {{user.last_name}}</p>
+			<p class="name">{{user.username}}</p>
+		</div>		
+	</div>
+
+	<div class="container dark-background" >
+		<div class="grid">
+			<button onclick="openMenu('menu1')" type="button" class="buto-light-btn read-btn">Прочитане</button>
+			<button onclick="openMenu('menu2')" type="button" class="buto-light-btn read-btn">Читаю</button>
+			<button onclick="openMenu('menu3')" type="button" class="buto-light-btn read-btn">Кинуто</button>
+		</div>
+		
+		<div class="grid">
+			<button onclick="openMenu('menu4')" type="button" class="buto-light-btn read-btn">Планую</button>
+			<button onclick="openMenu('menu5')" type="button" class="buto-light-btn read-btn">Роботи</button>
+			<button onclick="openMenu('menu6')" type="button" class="buto-light-btn read-btn">Рев'ю</button>
+		</div>
+
+		<div class="forum-btn">
+			<button onclick="openMenu('menu7')" type="button" class="buto-forum-btn">Форум</button>
+		</div>
+	</div>
+
+	<section class="container books menu" id="menu1">
+		<h2>Прочитане</h2>
+		<!-- <div class="flex-row">
+			<h2>Прочитане</h2>
+			<button onclick="closeAllMenus()" type="button" class="buto color-btn read-btn ">Закрити</button>
+		</div> -->
+		<div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>
+			</div>
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "flex-cont">
+						{% for book in finished_books %}
+						<div class="book-cont">
+							<a href="/bookpage/{{book.id}}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+						</a>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		
+	  </section>
+
+	  <section class="container books menu" id="menu2">
+		<h2>Читаю</h2>
+		<div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>
+			</div>
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "flex-cont">
+						{% for book in in_process_books %}
+						<div class="book-cont">
+							<a href="/bookpage/{{book.id}}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+						</a>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+	  </section>
+
+	  <section class="container books menu" id="menu3">
+		<h2>Кинуто</h2>
+		<div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>
+			</div>
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "flex-cont">
+						{% for book in give_over_books %}
+						<div class="book-cont">
+							<a href="/bookpage/{{book.id}}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+						</a>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		
+	  </section>
+
+	  <section class="container books menu" id="menu4">
+		<h2>Планую</h2>
+		<div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>
+			</div>
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "flex-cont">
+						{% for book in planned_books %}
+						<div class="book-cont">
+							<a href="/bookpage/{{book.id}}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+							<form action="delete_planned/" method="post">
+								{% csrf_token %}
+								<input type="hidden" name="book_id" value="{{book.id}}">
+								<button type="submit" class="buto buto-light-btn ">Видалити</button>
+							</form>
+						</a>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+	  </section>
+
+	  <section class="container books menu" id="menu6">
+		<h2>Рев'ю</h2>
+		<div class="dark-rect margin-dark">
+			{% for review in reviews %}
+			<div class="light-rect">
+				
+    <section class="publishedcomment ">
+		<div class="revie-cont">
+      <div class="imagelike">
+        <div class="avatarimage">
+          <img  class="avatar_image" src='{{review.book_id.cover.url}}' width="290" height="300" />
+
+        </div>
+        <div class="like_number">{{review.likes}} ❤︎</div>
+      </div>
+
+        <div class="topplusbottom">
+        <div class="topline">
+          <div class="toplinetext">
+            <p class="comentary_detail">{{review.book_id.name}}</p>
+            <p class="comentary_detail">{{review.posting_date}}</p>
+          </div>
+        </div>
+          <div class="commentarypublished">{{review.textofreview}}</div>
+        </div>
+	</div>
+      </section>
+	
+      <section class="bottomline">
+        <div class="stars">
+          {% with ''|center:review.rating as range %}
+          {% for _ in range %}
+          <p class="star">☆ </p>
+          {% endfor %}
+          {% endwith %}
+        </div>
+        <div class="rating_number">
+          {{review.rating}}/5
+        </div>
+      </section>
+      {% endfor %}
+
+	</div>
+		  </div>
+	  </section>
+	  <section class="container books menu" id="menu5">
+		<h2>Роботи</h2>
+		  <div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<a href="create/book">
+					<button type="button" class="buto buto-light-btn">Створити</button>
+				</a>
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>
+				
+			</div>
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "flex-cont">
+						{% for book in created_books %}
+						<div class="book-cont">
+							<a href="/bookpage/{{book.id}}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+							<form action="/bookpage/{{book.id}}/update" method="post">
+								{% csrf_token %}
+								<button type="submit" class="buto buto-light-btn ">Редагувати</button>
+							</form>
+						</a>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+	  </section>
+
+	</div>
+
+	<section class="container books menu" id="menu7">
+		<h2>Форуми</h2>
+		<div class="dark-rect margin-dark flex-column">
+			<div class="column-btn">
+				<button onclick="closeAllMenus()" type="button" class="buto buto-light-btn">Закрити</button>	
+			</div>
+
+			<div class="light-rect margin-light">
+				<div class="dark-rect margin-dark">
+					<div class = "forum-cont">
+						{% for forum in forums %}
+							<a href="/forum/{{forum.id}}" class="forum-link">{{forum.name}}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	  </section>
+	<script src="{% static 'js/user.js'%}"></script>
+	<div class="funnyblock"><button class="chat"><a class="uglydecorations" href="/chat">Чат</a></button></div>
+{% endblock %}

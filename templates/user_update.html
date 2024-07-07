@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} 
+	<link rel="stylesheet" href="{% static 'styles/main.css'%}">
+	<link rel="stylesheet" href="{% static 'styles/user.css'%}">
+	<link rel="stylesheet" href="{% static 'styles/user_update.css'%}">
+{% endblock %}
+
+{% block body %}
+
+
+<form action="update" method="post" class="basic_information container"> 
+	{% csrf_token %}
+	<div class="image_basic_information">
+		<label class="main">
+			<input name="avatar" type="file" class="imageinput" accept="image/*"/>
+			<!-- {%if user.avatar %} -->
+			<style>
+				.imageinput {
+					background-image: url("/static/img/books/Rectangle 8.png");
+				}
+			</style>
+			<!-- {%endif%} -->
+			<div></div>
+		</label>
+	</div>
+
+	<div class="text_basic_information">
+		<div><input name="first_name" type="text" class="tbi_little_block" placeholder="Ім'я" value = "{{user.first_name}}"></div>
+		<div><input name="last_name" type="text" class="tbi_little_block" placeholder="Прізвище" value = "{{user.last_name}}"></div>
+		<div><input name="username" type="text" class="tbi_little_block" placeholder="Нік користувача" value = "{{user.username}}"></div>
+		<div><input name="email" type="text" class="tbi_little_block" placeholder="Email" value = "{{user.email}}"></div>
+		<div><input name="password" type="text" class="tbi_little_block" placeholder="Новий пароль"></div>
+		<button type="submit" class="buto color-btn update-buto">Оновити дані</button>
+	</div>
+	
+</form>
+
+
+
+{% endblock %}

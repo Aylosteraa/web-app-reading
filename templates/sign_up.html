@@ -1,0 +1,58 @@
+{% extends "base_header.html" %}
+{% load static %}
+{% block links %} 
+	<link rel="stylesheet" href="{% static 'styles/sign.css'%}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="flex-cont">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-6">
+				<div class="card shadow-2-strong" style="border-radius: 1rem;">
+				<div class="card-body p-5 text-center">
+
+					<h3 class="mb-5 register-color">Зареєструйтеся</h3>
+				<form action="sign_up_post/" method="post">
+					{% csrf_token %}
+					<div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input type="text" name="first_name" id="form3Example1" class="form-control form-control-lg" placeholder="First name">
+                          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input type="text" name="second_name" id="form3Example1" class="form-control form-control-lg" placeholder="Second name">
+                          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68px;"></div><div class="form-notch-trailing"></div></div></div>
+                        </div>
+                      </div>
+
+					  <div class="form-outline mb-4">
+						<input type="text" name="username" id="typeUsername-2" class="form-control form-control-lg" placeholder="Username">
+						<div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div></div>
+
+					<div class="form-outline mb-4">
+					<input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email">
+					<div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div></div>
+
+					<div class="form-outline mb-4">
+					<input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Password">
+					<div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+					<!-- Checkbox -->
+					<div class="d-flex justify-content-start mb-4">
+					<label class="form-check-label" for="form1Example3">Вже маєте аккаунту? <a href="/user/sign_in" class="register-color"> Увійдіть</a></label>
+				
+					</div>
+
+					<button class="btn btn-color btn-lg btn-block" type="submit">Зареєструватися</button>
+				</form>
+				</div>
+				</div>
+			</div>
+			<div class="book-icon">
+				<img src="{% static 'img/icons/Vector.svg' %}" alt="">
+			</div>
+		</div>
+	</div>
+{% endblock %}

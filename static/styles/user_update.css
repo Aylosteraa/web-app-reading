@@ -1,0 +1,62 @@
+.tbi_little_block {
+    text-align: center;
+    height: auto;
+    width: 400px;
+    background-color:#002900;
+	color: #D5FFD9;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    border: none;
+    margin-bottom: 50px;
+}
+
+/* .text_basic_information, .image_basic_information {
+    height: 340px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+} */
+
+.text_basic_information {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 60px;
+}
+
+.basic_information {
+    display: flex;
+	align-items: flex-start;
+    justify-content: space-between;
+	margin-top: 60px;
+    
+
+}
+
+.image_basic_information {
+    background-color:#002900;
+    width: 35%;
+	height: auto;
+    
+} 
+.imageinput {
+    cursor:pointer;
+    width: 300px;
+    height: 340px;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.update-buto{
+	width: 300px;
+	font-size: 25px;
+}

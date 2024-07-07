@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/creating.css'%}"> {% endblock %}
+
+{% block body %} 
+    <section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+        <div>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+            <button type="button" class="btn color-btn">search</button>
+          </div>
+        </div>
+    </section>
+<form action="book/chapter" method="post">
+	{% csrf_token %}
+    <section class="basic_information"> 
+        <div class="text_basic_information">
+            <div><input name ="name" type="search" class="tbi_little_block" placeholder="Назва"></div>
+            <div><input name = "author" type="search" class="tbi_little_block" placeholder="Автор"></div>
+            <div><input name="translator" type="search" class="tbi_little_block" placeholder="Перекладач"></div>
+        </div>
+        <div class="image_basic_information">
+			<label class="main">
+				<input name ="cover" type="file" class="imageinput" accept="image/*" />
+				<div></div>
+			</label>
+		</div>
+    </section>
+	<select name="genres" id="cars" class="status">
+		<option hidden>Жанри</option>
+		{% for genre in genres %}
+		<option value="{{genre.name}}">{{genre.name}}</option>
+		{% endfor %}
+	</select>
+		<select name="bookstatus" id="cars" class="status">
+			<option hidden>Статус</option>
+			{% for x in status %}
+			<option value="{{x.name}}">{{x.name}}</option>
+			{% endfor %}
+		</select>
+	</section>
+	<section>
+		<div class="synopsis">
+			<p class="block_name">Синопсис</p>
+			<textarea class="synopsis_text" name="synopsis"></textarea>
+		</div>
+	</section>
+	<button class="dalibutton" type="submit">Далі</button>
+</form>
+{% endblock %}

@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/creating.css'%}">
+<link rel="stylesheet" href="{% static 'styles/main.css'%}">
+<link rel="stylesheet" href="{% static 'styles/chapterpage.css'%}">
+<link rel="stylesheet" href="{% static 'styles/forum.css'%}">
+<link rel="stylesheet" href="{% static 'styles/book_page.css'%}">
+
+ {% endblock %}
+
+{% block body %} 
+<section class="forum_header">
+  <div class="forum">Чат</div>
+</section>
+<form id="form">
+<div class="comentary_block">
+<p class="block_name">Долучіться до обговорення як *{{user.username}}*</p>
+<select hidden name="username"><option value="{{user.username}}">{{user.username}}</option></select>
+<input type="text" name="message" class="comentary_text"/>
+</form>
+</div>
+<div id="messages"></div>
+<div class="funnyblock"><div class="bigasssign">Історія чату</div></div>
+{% for chat in chats %}
+<div class="comentary_block_published">
+  <div class="blockline"><p class="toplineinformation">{{chat.user_id}}</p>
+    <p class="toplineinformation">{{chat.posting_date}}</p></div>
+  <p class="justsometext">{{chat.message_text}}</p>
+</div>
+{% endfor %}
+<script type="text/javascript">
+  let url = `ws://${location.host}/ws/socket-server/`
+  const ChatSocket = new WebSocket(url)
+  ChatSocket.onmessage = function(e){
+    let data = JSON.parse(e.data)
+    console.log('DATA:', data)
+
+    if(data.type === 'chat' ){
+      let messages = document.getElementById('messages')
+
+      messages.insertAdjacentHTML('beforeend', `<div class="comentary_block_published">
+        <div class="blockline"><p class="toplineinformation">{{user.username}}</p>
+          <p class="toplineinformation">${data.date}</p></div>
+        <p class="justsometext">${data.message}</p>
+        </div>`)
+    }
+  }
+  let form = document.getElementById('form')
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    let message = e.target.message.value
+    let username = e.target.username.value
+    ChatSocket.send(JSON.stringify({
+      'message':message,
+      'username': username,
+    }))
+    form.reset()
+  })
+</script>
+	</section>
+    <section class="forum_line">
+</section>
+  {% endblock %}

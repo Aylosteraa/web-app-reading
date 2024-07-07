@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/creating.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/chapterpage.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/book_page.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/review.css' %}">
+ {% endblock %}
+
+{% block body %} 
+    <section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+        <div class="book_page_header">
+            <div class="forum_url">Форум</div>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+            <button type="button" class="btn color-btn">search</button>
+          </div>
+        </div>
+    </section>
+    <section class="both_information_line">
+      <div class="information_line">
+        <div class="information_little_block">{{books.name}}</div>
+        <div class="information_little_block">{{books.average_point}}</div>
+    </div>
+    <div class="information_line">
+      <select class="information_little_block">
+        <option hidden>Автор(и)</option>
+      {% for author in authors %}
+  
+        <option value="" disabled>{{author.name}}</option>
+        {% endfor %}
+      </select>
+        <div class="information_little_block">{{status.name}}</div>
+    </div>
+    </section>
+    {% for review in reviews %}
+    <section class="publishedcomment">
+      <div class="imagelike">
+        <div class="avatarimage">
+          <img  class="avatar_image" src='{{review.user_id.avatar.url}}' width="290" height="300" />
+
+        </div>
+        <div class="like_number">{{review.likes}} ❤︎</div>
+      </div>
+        <div class="topplusbottom">
+        <div class="topline">
+          <div class="toplinetext">
+            <p class="comentary_detail">{{review.user_id}}</p>
+            <p class="comentary_detail">{{review.posting_date}}</p>
+          </div>
+        </div>
+          <div class="commentarypublished">{{review.textofreview}}</div>
+          <form action="review/{{review.id}}" method="post">
+            {% csrf_token %}
+          <button class="replybutton" type="submit">Вподобати</button>
+          </form>
+        </div>
+      </section>
+      <section class="bottomline">
+        <div class="stars">
+          {% with ''|center:review.rating as range %}
+          {% for _ in range %}
+          <p class="star">☆ </p>
+          {% endfor %}
+          {% endwith %}
+        </div>
+        <div class="rating_number">
+          {{review.rating}}/5
+        </div>
+      </section>
+      {% endfor %}
+      
+      {% endblock %}

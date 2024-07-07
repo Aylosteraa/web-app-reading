@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/cataloge.css'%}"> {% endblock %}
+
+{% block body %} 
+<section class="pb-4">
+	<div class="rounded-5">
+	  
+		<section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+			<form method="get" action="{% url 'search' %}">
+				<div class="input-group">
+					<input type="search" name="search" class="form-control rounded" placeholder="Пошук" aria-label="Search" aria-describedby="search-addon">
+					<button type="submit" class="btn color-btn">Знайти</button>
+				</div>
+				</form>
+		</section>
+
+	</div>
+  </section>
+  <section class="container books">
+	<h2>Каталог</h2>
+
+	<form action="sort" method="get" class="flex-row">
+		<script>
+			var expanded = false;
+			function showCheckboxes() {
+				var checkboxes = document.getElementById("checkboxes");
+				if (!expanded) {
+					checkboxes.style.visibility = "visible";
+					expanded = true;
+				} else {
+					checkboxes.style.visibility = "hidden";
+					expanded = false;
+				}
+			
+			}
+		</script>
+		<div class="multiselect">
+			<div class="selectBox" onclick="showCheckboxes()">
+				<select class="status">
+				  <option>Жанри</option>
+				</select>
+				<div class="overSelect"></div>
+			  </div>
+			<div class="multiselect">
+			  <div class="container flex-center" id="checkboxes">
+				<div class="grid-table">
+					{% for genre in genres %}
+						<label for="one" class="container_checkbox">
+						<input type="checkbox" name="genre" value="{{genre.id}}" />{{genre.name}}</label>
+					{% endfor %}
+				</div>
+			  </div>
+			</div>
+		</div>	
+		<select name="status" id="status" class="status">
+			<option value="" selected disabled hidden>Статус</option>
+			<option value="1">Закінчені</option>
+			<option value="2">Заморожені</option>
+			<option value="3">В процесі</option>
+		</select>
+		<select name="sort" id="sort" class="status">
+			<option value="" selected disabled hidden>Сортувати</option>
+			<option value="1">За рейтенгом</option>
+			<option value="2">За популярністю</option>
+		</select>
+		<button type="submit" class="btn color-btn btn-checkbox">Знайти</button>
+	</form>
+	<div class="dark-rect margin-dark">
+		<div class="light-rect margin-light">
+			<div class="dark-rect margin-dark">
+				<div class = "flex-cont">
+					{% for book in books %}
+					<div class="book-cont">
+						<a href="/bookpage/{{book.id}}">
+						<img class="book" src="{{book.cover.url}}" alt="">
+						<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+					</a>
+					</div>
+					{% endfor %}
+				</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+  </section>
+
+  {% endblock %}

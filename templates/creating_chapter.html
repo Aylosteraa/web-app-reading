@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/creating.css'%}"> 
+<link rel="stylesheet" href="{% static 'styles/creating_chapter.css'%}"> {% endblock %}
+
+{% block body %} 
+    <section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+        <div>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+            <button type="button" class="btn color-btn">search</button>
+          </div>
+        </div>
+    </section>
+    <form action="userview/{{book.id}}" method="post">
+      {% csrf_token %}
+    <section class="name_section"> 
+        <div>
+            <div><input name="chaptername" type="text" class="chapter_name" placeholder="Назва глави"></div>
+        </div>
+    </section>
+    <section>
+		<div class="chapter_back">
+			<p class="block_name">Текст глави</p>
+            <textarea name="chaptertext" class="chapter_text"></textarea>
+		</div>
+	</section>
+    <section class="listofbutton">
+        <div>
+                <button class="button_publish" type="submit">Опублікувати</button>
+        </div>
+        <div>
+          <button class="button_cancel" type="button"><a class="uglybutton" href="/user">Скасувати</a></button>
+        </div>
+        <!-- <div>
+                <button class="button_add" type="submit">Додати главу</button>
+        </div> -->
+    </section>
+  </form>
+  {% endblock %}

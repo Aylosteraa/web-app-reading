@@ -1,0 +1,20 @@
+.register-color {
+	color: #002900;
+}
+
+.btn-color{
+	background-color:#002900;
+	color: #D5FFD9;
+}
+
+.book-icon img {
+	height: 375px;
+	padding-left: 150px;
+}
+
+.flex-cont {
+	padding-top: 30px;
+	display: flex;
+	align-items: center;
+
+}

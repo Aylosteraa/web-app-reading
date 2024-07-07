@@ -1,0 +1,220 @@
+::placeholder {
+    color: #D5FFD9;
+    opacity: 1; 
+}
+::-webkit-input-placeholder {
+    text-align: center;
+}
+[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEyMy4wNXB4IiBoZWlnaHQ9IjEyMy4wNXB4IiB2aWV3Qm94PSIwIDAgMTIzLjA1IDEyMy4wNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIzLjA1IDEyMy4wNTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTEyMS4zMjUsMTAuOTI1bC04LjUtOC4zOTljLTIuMy0yLjMtNi4xLTIuMy04LjUsMGwtNDIuNCw0Mi4zOTlMMTguNzI2LDEuNzI2Yy0yLjMwMS0yLjMwMS02LjEwMS0yLjMwMS04LjUsMGwtOC41LDguNQ0KCQljLTIuMzAxLDIuMy0yLjMwMSw2LjEsMCw4LjVsNDMuMSw0My4xbC00Mi4zLDQyLjVjLTIuMywyLjMtMi4zLDYuMSwwLDguNWw4LjUsOC41YzIuMywyLjMsNi4xLDIuMyw4LjUsMGw0Mi4zOTktNDIuNGw0Mi40LDQyLjQNCgkJYzIuMywyLjMsNi4xLDIuMyw4LjUsMGw4LjUtOC41YzIuMy0yLjMsMi4zLTYuMSwwLTguNWwtNDIuNS00Mi40bDQyLjQtNDIuMzk5QzEyMy42MjUsMTcuMTI1LDEyMy42MjUsMTMuMzI1LDEyMS4zMjUsMTAuOTI1eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=);
+    background-size: 10px 10px;
+}
+.basic_information {
+    display: flex;
+	align-items: center;
+    justify-content: space-between;
+    width: 1300px;
+    padding: 12px;
+    margin-left: 110px;
+    margin-right: 110px;
+
+}
+.text_basic_information, .image_basic_information {
+    height: 340px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+.tbi_little_block {
+    text-align: center;
+    height: 100px;
+    width: 340px;
+    background-color:#002900;
+    color: #D5FFD9;
+    font-size: 35px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+}
+ .image_basic_information {
+    background-color:#002900;
+    width: 300px;
+    background-image: url(https://static.boredpanda.com/blog/wp-content/uploads/2021/03/terrible-book-covers-157-6061c44cc74d4__700.jpg);
+    background-size: 320px 320px;
+    border: 10px solid #002900;
+
+} 
+.imageinput {
+    cursor:pointer;
+    width: 300px;
+    height: 340px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+} 
+.main {
+    position: relative;
+    height: 200px;
+}
+.filter_information {
+    display: flex;
+    width: 1300px;
+    padding: 12px;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-top: 100px;
+}
+.genres, .status {
+    text-align: center;
+    height: 80px;
+    width: 320px;
+    background-color:#D5FFD9;
+    color: #002900;
+    border: 10px solid #002900;
+    font-size: 35px;
+    align-items: center;
+    margin-right: 40px;
+}
+.multiselect {
+    width: 300px;
+    margin-right:40px;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #checkboxes {
+    display: none;
+    color: #002900;
+    border-left: 10px solid #002900;
+    border-right: 10px solid #002900;
+    border-bottom: 10px solid #002900;
+    font-size: 35px;
+  }
+  
+  #checkboxes label {
+    display: flex;
+  }
+  
+  #checkboxes label:hover {
+    background-color: #002900;
+    color: #D5FFD9;
+  }
+  input[type="checkbox"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color:#D5FFD9;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 0.75em;
+    height: 0.75em;
+    border: 0.10em solid currentColor;
+    border-radius: 0.15em;
+    display: grid;
+    margin-left: 10px;
+    margin-top: 14px;
+    margin-right: 10px;
+    
+  }
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    background-color: #002900;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+  input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  }
+  .synopsis {
+    width: 1280px;
+    height: 700px;
+    margin-left: 120px;
+    margin-right: 110px;
+    margin-top: 100px;
+    background-color: #002900;
+  }
+  .block_name {
+    margin-left: 80px;
+    padding-top: 40px;
+    color: #D5FFD9;
+    font-size: 40px;
+  }
+  .synopsis_text {
+    height: 450px;
+    background-color: #D5FFD9;
+    margin-left: 80px;
+    margin-top: 40px;
+    width: 1120px;
+    display: flex;
+    text-align: left;
+  }
+  .dalibutton {
+    text-align: center;
+    height: 80px;
+    width: 170px;
+    background-color:#D5FFD9;
+    color: #002900;
+    border: 10px solid #002900;
+    font-size: 35px;
+    align-items: center;
+    margin-left: 120px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .status {
+    margin-left: 120px;
+    margin-top: 30px;
+  }
+  .genre_s {
+    text-align: center;
+    height: 200px;
+    width: 320px;
+    background-color:#D5FFD9;
+    color: #002900;
+    border: 10px solid #002900;
+    font-size: 35px;
+    align-items: center;
+    margin-right: 120px;
+    margin-left: 120px;
+    margin-top: 50px;
+}
+.uglybutton {
+  text-decoration: none;
+  color: #002900;
+}
+.uglybutton:hover {
+  color: black;
+}

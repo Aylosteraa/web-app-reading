@@ -1,0 +1,10 @@
+{% extends "base_header.html" %}
+{% load static %}
+{% block links %} 
+	<link rel="stylesheet" href="{% static 'styles/sign.css'%}">
+{% endblock %}
+
+{% block body %}
+<p>{{synopsis}}</p>
+<p>{{a}}</p>
+{% endblock %}

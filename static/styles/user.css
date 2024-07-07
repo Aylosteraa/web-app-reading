@@ -1,0 +1,140 @@
+.h2_user {
+	background: #002900;
+	padding: 5px;
+	color:  #D5FFD9;
+	margin-bottom: 0px;
+}
+
+.light-rectangel {
+	background: #D5FFD9;
+	padding: 2px;
+}
+
+.dark-rectangel {
+	background: #002900;
+	padding: 5px;
+}
+
+.buto {
+	display: inline-block;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 10px;
+	border-width: 1px;
+	border-color: #D5FFD9;
+	color:#D5FFD9;
+	background-color: #002900;
+	transition: background-color 0.3s ease-in-out;
+  }
+
+.buto:hover {
+	border-color: #002900;
+	color:#002900;
+	background-color: transparent;
+}
+
+
+.user_img {
+	width: 35%;
+	height: auto;
+}
+
+.name {
+	width: 400px;
+	color: #D5FFD9; 
+	font-size: 24px;
+	background-color: #002900;
+	padding: 10px;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	row-gap: 25px;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.flex-space-between {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 55px;
+}
+
+.dark-background {
+	background-color: #002900;
+	padding: 35px;
+	margin-bottom: 55px;
+}
+
+.buto-light-btn {
+	display: inline-block;
+	padding: 10px 20px;
+	border-width: 1px;
+	text-decoration: none;
+	border-radius: 10px;
+	border-color: #002900;
+	color: #002900;
+	background-color: #D5FFD9;
+	transition: background-color 0.3s ease-in-out;
+	/* width: 33%; */
+  }
+
+.buto-light-btn:hover {
+	border-color: #D5FFD9;
+	color:#D5FFD9;
+	background-color: transparent;
+}
+
+.grid {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
+.forum-btn {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buto-forum-btn {
+	display: inline-block;
+	padding: 10px 20px;
+	border-width: 1px;
+	text-decoration: none;
+	border-radius: 10px;
+	border-color: #D5FFD9;
+	color: #D5FFD9;
+	background-color: transparent;
+	transition: background-color 0.3s ease-in-out;
+	width: 33%;
+	height: 55px;
+	margin-top: 10px;
+}
+
+.buto-forum-btn:hover {
+	border-color: #002900;
+	color:#002900;
+	background-color: #D5FFD9;
+}
+
+.menu {
+	display: none;
+}
+
+.read-btn{
+	width: 33%;
+}
+
+.avatar_image {
+    width: 15%;
+	height: auto;
+    background-color: #002900;
+  }

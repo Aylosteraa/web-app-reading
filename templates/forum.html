@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/creating.css'%}">
+<link rel="stylesheet" href="{% static 'styles/main.css'%}">
+<link rel="stylesheet" href="{% static 'styles/chapterpage.css'%}">
+<link rel="stylesheet" href="{% static 'styles/forum.css'%}">
+<link rel="stylesheet" href="{% static 'styles/book_page.css'%}">
+
+ {% endblock %}
+
+{% block body %} 
+    <section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+        <div>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+            <button type="button" class="btn color-btn">search</button>
+          </div>
+        </div>
+    </section>
+    <section class="forum_header">
+        <div class="forum">Форум</div>
+    </section>
+    <section>
+      <form action="{{bookid}}/post" method="post">
+        {% csrf_token %}
+		<div class="comentary_block">
+			<p class="block_name">Долучіться до обговорення як *{{user.username}}*</p>
+			<textarea name="message" class="comentary_text"></textarea>
+            <a href="chapter_page.html">
+                <button class="commentbutton" type="submit">Коментувати</button>
+            </a>
+		</div>
+    </form>
+	</section>
+    <section class="forum_line">
+    {% for message in messages %}
+    <section class="publishedcomment">
+        <div class="avatarimage">
+          <img  class="avatar_image" src="{{message.user_id.avatar.url}}" width="290" height="300" />
+        </div>
+        <div class="topplusbottom">
+        <div class="topline">
+          <div class="toplinetext">
+            <p class="comentary_detail">{{message.user_id}}</p>
+            <p class="comentary_detail">{{message.posting_date}}2</p>
+          </div>
+        </div>
+          <div class="commentarypublished">{{message.message_text}}</div>
+          <button class="replybutton" type="button"><a class ="forumbutton" href="/bookpage/{{message.book_id.id}}/">{{message.book_id.name}}</a></button>
+        </div>
+    </section>
+    {% endfor %}
+</section>
+  {% endblock %}

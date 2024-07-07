@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/creating.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/chapterpage.css' %}">
+ {% endblock %}
+ {% block body %} 
+ <section class="nextpage"><button class="next_page"><a class="nextpagebutton" href="/bookpage/{{chapters.book_id.id}}">Назад до книги</a></button></section>
+    <section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+        <div>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+            <button type="button" class="btn color-btn">search</button>
+          </div>
+        </div>
+    </section>
+    <section class="chaptertext">
+        <p class="chaptername">{{chapters.name}}</p>
+        <div class="bigtext">
+            {{chapters.chapter_text}}
+        </div>
+    </section>
+    {%if length > 1 %}
+    {% with a=chapters.number b=1 %}
+    {%if length > chapters.number %}
+    <section class="nextpage"><button class="next_page"><a class="nextpagebutton" href="{{a|add:b}}">Наступна глава</a></button></section>
+    {% endif %}
+    {%if chapters.number > 1 %}
+    <section class="nextpage"><button class="next_page"><a class="nextpagebutton" href='{{a|add:"-1"}}'>Попередня глава</a></button></section>
+    {% endif %}
+    {% endwith %}
+    {% endif %}
+    <form action="{{chapters.number}}/comentar" method="post">
+      {% csrf_token %}
+    <section>
+		<div class="comentary_block">
+			<p class="block_name">Текст коментаря</p>
+			<textarea class="comentary_text" name="commentar"></textarea>
+      <button class="commentbutton" type="submit">Коментувати</button>
+		</div>
+	</section>
+  </form>
+  {% for comentar in comentarys%}
+    <section class="publishedcomment">
+      <div class="avatarimage">
+        <img  class="avatar_image" src='{{comentar.user_id.avatar.url}}' width="290" height="300" />
+      </div>
+      <div class="topplusbottom">
+      <div class="topline">
+        <div class="toplinetext">
+          <p class="comentary_detail">{{comentar.user_id}}</p>
+          <p class="comentary_detail">{{comentar.posting_date}}</p>
+        </div>
+      </div>
+        <div class="commentarypublished">{{comentar.textofcomentary}}</div>
+        <button class="replybutton" type="button">Глава {{comentar.chapter_number.number}}</button>
+      </div>
+	</section>
+  {% endfor %}
+  {% endblock %}

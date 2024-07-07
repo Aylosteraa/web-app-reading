@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %} <link rel="stylesheet" href="{% static 'styles/main.css'%}"> {% endblock %}
+
+{% block body %}
+<section class="pb-4">
+	<div class="rounded-5">
+	  
+			<section class="w-100 p-4 pb-4 d-flex justify-content-center align-items-center flex-column">
+				<form method="get" action="{% url 'search' %}">
+				<div class="input-group">
+					<input type="search" name="search" class="form-control rounded" placeholder="Пошук" aria-label="Search" aria-describedby="search-addon">
+					<button type="submit" class="btn color-btn">Знайти</button>
+				</div>
+				</form>
+				
+			  </section>
+		</form>
+	
+  </section>
+
+  <section class="filter_information container">
+		<script>
+			var expanded = false;
+			function showCheckboxes() {
+				var checkboxes = document.getElementById("checkboxes");
+				if (!expanded) {
+					checkboxes.style.visibility = "visible";
+					expanded = true;
+				} else {
+					checkboxes.style.visibility = "hidden";
+					expanded = false;
+				}
+			
+			}
+		</script>
+		<form method="get" action="{% url 'search_genres' %}"  class="center-page">
+			<div class="selectBox" onclick="showCheckboxes()">
+				<select class="status">
+				  <option>Знайти книгу за жанрами</option>
+				</select>
+				<div class="overSelect"></div>
+			  </div>
+			<div class="multiselect">
+			  <div class="container flex-center" id="checkboxes">
+				<div class="grid-table">
+					{% for genre in genres %}
+						<label for="one" class="container_checkbox">
+						<input type="checkbox" name="genre" value="{{genre.id}}" />{{genre.name}}</label>
+					{% endfor %}
+				</div>
+				<div class="center-container">
+					<button type="submit" class="btn color-btn btn-checkbox">Знайти</button>
+				</div>
+			  </div>
+			</div>
+		</form>	
+	</section>
+
+
+  <section class="container books">
+	<h2>Популярне</h2>
+	<div class="dark-rect margin-dark">
+		<div class="light-rect margin-light">
+			<div class="dark-rect margin-dark">
+				<div class = "flex-cont">
+					{% for book in popular_books %}
+					
+						<div class="book-cont">
+							<a href="{{book.cover.url }}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+						</a>
+						</div>
+					{% endfor %}						
+				</div>
+			</div>
+		</div>
+	  </div>
+  </section>
+
+  <section class="container books">
+	<h2>Оновлення</h2>
+	<div class="dark-rect margin-dark">
+		<div class="light-rect margin-light">
+			<div class="dark-rect margin-dark">
+				<div class = "flex-cont">
+					{% for book in books %}
+					
+						<div class="book-cont">
+							<a href="{{book.cover.url }}">
+							<img class="book" src="{{book.cover.url}}" alt="">
+							<a href="/bookpage/{{book.id}}">{{book.name}}</a>
+						</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	  </div>
+  </section>
+
+  {% endblock %}
